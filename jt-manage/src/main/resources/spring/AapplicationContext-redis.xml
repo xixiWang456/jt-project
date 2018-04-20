@@ -1,0 +1,46 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd 
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+	<!-- <bean id="jedis" class="redis.clients.jedis.Jedis">
+		<constructor-arg name="host" value="${redis.host}"/>
+		<constructor-arg name="port" value="${redis.port}"/>
+	</bean> -->
+	
+	<!--每次都创建jedis对象性能较低 创建jedis线程池  -->
+	<bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<!--定义连接总数  -->
+		<property name="maxTotal" value="${redis.maxTotal}"/>
+		<!--定义最大闲置资源  -->
+		<property name="maxIdle" value="${redis.maxIdle}"/>
+		<!--定义是否自动连接  -->
+		<property name="testOnBorrow" value="${redis.testOnBorrow}"/>
+	</bean>
+	
+	
+	<!--定义jedis工厂模式  -->
+	<bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" >
+		<!--定义远程主机  -->
+		<property name="hostName" value="${redis.host}"/>
+		<!--定义端口号 -->
+		<property name="port" value="${redis.port}"/>
+		<!--引入配置文件  -->
+		<property name="poolConfig" ref="poolConfig"/>
+	</bean>
+	
+	<!--定义redisTemplate方便操作redis  -->
+	<bean id="stringRedisTemplate" class="org.springframework.data.redis.core.StringRedisTemplate">
+		<property name="connectionFactory" ref="jedisConnectionFactory"/>
+	</bean>
+	
+	
+</beans>
