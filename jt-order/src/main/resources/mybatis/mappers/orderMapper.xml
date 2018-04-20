@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- 命名空间作用
+  		1  映射文件唯一标识
+  		2 应该与mapper接口路径保持一致
+  		3 根据操作数据表的不同，生成不同的namespace  一个表对应一个mappe接口一个映射文件
+   -->
+<mapper namespace="com.jt.order.mapper.OrderMapper">
+	<update id="updateStatus">
+	<!-- 	<![CDATA[ update tb_order set status=6 where created < #{agoDate} and status=1 ]]> -->
+		update tb_order set status=6 where created &lt; #{agoDate} and status=1
+	</update>
+</mapper> 

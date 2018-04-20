@@ -1,0 +1,10 @@
+E:\ws1\jt\jt-order\src\main\java\com\jt\order\mapper\OrderItemMapper.java
+E:\ws1\jt\jt-order\src\main\java\com\jt\order\controller\OrderController.java
+E:\ws1\jt\jt-order\src\main\java\com\jt\order\pojo\OrderItem.java
+E:\ws1\jt\jt-order\src\main\java\com\jt\order\service\OrderService.java
+E:\ws1\jt\jt-order\src\main\java\com\jt\order\job\PaymentOrderJob.java
+E:\ws1\jt\jt-order\src\main\java\com\jt\order\mapper\OrderMapper.java
+E:\ws1\jt\jt-order\src\main\java\com\jt\order\mapper\OrderShippingMapper.java
+E:\ws1\jt\jt-order\src\main\java\com\jt\order\service\OrderServiceImpl.java
+E:\ws1\jt\jt-order\src\main\java\com\jt\order\pojo\Order.java
+E:\ws1\jt\jt-order\src\main\java\com\jt\order\pojo\OrderShipping.java
